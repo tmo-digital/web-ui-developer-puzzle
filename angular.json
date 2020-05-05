@@ -1,0 +1,368 @@
+{
+  "version": 1,
+  "projects": {
+    "okreads": {
+      "root": "apps/okreads",
+      "sourceRoot": "apps/okreads",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "serve": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "nx serve okreads-api"
+              },
+              {
+                "command": "nx serve okreads-browser"
+              }
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "nx e2e okreads-e2e"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "okreads-browser": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/okreads/browser",
+      "sourceRoot": "apps/okreads/browser/src",
+      "prefix": "tmo",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/okreads/browser",
+            "index": "apps/okreads/browser/src/index.html",
+            "main": "apps/okreads/browser/src/main.ts",
+            "polyfills": "apps/okreads/browser/src/polyfills.ts",
+            "tsConfig": "apps/okreads/browser/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/okreads/browser/src/favicon.ico",
+              "apps/okreads/browser/src/assets"
+            ],
+            "styles": ["apps/okreads/browser/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["libs/shared/styles/src/lib"]
+            },
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/okreads/browser/src/environments/environment.ts",
+                  "with": "apps/okreads/browser/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "okreads-browser:build",
+            "proxyConfig": "apps/okreads/browser/proxy.conf.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "okreads-browser:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "okreads-browser:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/okreads/browser/tsconfig.app.json",
+              "apps/okreads/browser/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/okreads/browser/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/okreads/browser/jest.config.js",
+            "tsConfig": "apps/okreads/browser/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/okreads/browser/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "okreads-api": {
+      "root": "apps/okreads/api",
+      "sourceRoot": "apps/okreads/api/src",
+      "projectType": "application",
+      "prefix": "okreads-api",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/okreads/api",
+            "main": "apps/okreads/api/src/main.ts",
+            "tsConfig": "apps/okreads/api/tsconfig.app.json",
+            "assets": ["apps/okreads/api/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/okreads/api/src/environments/environment.ts",
+                  "with": "apps/okreads/api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "okreads-api:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/okreads/api/tsconfig.app.json",
+              "apps/okreads/api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/okreads/api/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/okreads/api/jest.config.js",
+            "tsConfig": "apps/okreads/api/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-styles": {
+      "projectType": "library",
+      "root": "libs/shared/styles",
+      "sourceRoot": "libs/shared/styles/src",
+      "prefix": "tmo",
+      "architect": {},
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "shared-models": {
+      "projectType": "library",
+      "root": "libs/shared/models",
+      "sourceRoot": "libs/shared/models/src",
+      "prefix": "tmo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/shared/models/tsconfig.lib.json"],
+            "exclude": ["**/node_modules/**", "!libs/shared/models/**"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "books-feature": {
+      "projectType": "library",
+      "root": "libs/books/feature",
+      "sourceRoot": "libs/books/feature/src",
+      "prefix": "tmo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/books/feature/tsconfig.lib.json",
+              "libs/books/feature/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/books/feature/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/books/feature/jest.config.js",
+            "tsConfig": "libs/books/feature/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/books/feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "books-data-access": {
+      "projectType": "library",
+      "root": "libs/books/data-access",
+      "sourceRoot": "libs/books/data-access/src",
+      "prefix": "tmo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/books/data-access/tsconfig.lib.json",
+              "libs/books/data-access/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/books/data-access/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/books/data-access/jest.config.js",
+            "tsConfig": "libs/books/data-access/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/books/data-access/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "okreads-e2e": {
+      "root": "apps/okreads-e2e",
+      "sourceRoot": "apps/okreads-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/okreads-e2e/protractor.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/okreads-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/okreads-e2e/**"]
+          }
+        }
+      }
+    },
+    "shared-storage": {
+      "root": "libs/shared/storage",
+      "sourceRoot": "libs/shared/storage/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/storage/tsconfig.lib.json",
+              "libs/shared/storage/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/storage/**"]
+          }
+        }
+      }
+    },
+    "shared-testing": {
+      "projectType": "library",
+      "root": "libs/shared/testing",
+      "sourceRoot": "libs/shared/testing/src",
+      "prefix": "tmo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/shared/testing/tsconfig.lib.json"],
+            "exclude": ["**/node_modules/**", "!libs/shared/testing/**"]
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "api-books": {
+      "root": "libs/api/books",
+      "sourceRoot": "libs/api/books/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/api/books/tsconfig.lib.json"],
+            "exclude": ["**/node_modules/**", "!libs/api/books/**"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  }
+}

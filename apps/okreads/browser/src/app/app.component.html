@@ -1,0 +1,35 @@
+<mat-drawer-container class="app-container" [hasBackdrop]="true">
+  <mat-drawer-content>
+    <header class="header">
+      <div class="header--content">
+        <h1>okreads</h1>
+        <div>
+          <button
+            data-testing="toggle-reading-list"
+            mat-button
+            (click)="drawer.toggle()"
+          >
+            Reading List
+            <tmo-total-count></tmo-total-count>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <tmo-book-search></tmo-book-search>
+    </main>
+  </mat-drawer-content>
+  <mat-drawer #drawer mode="over" position="end">
+    <div class="reading-list-container" data-testing="reading-list-container">
+      <h2>
+        My Reading List
+        <button mat-icon-button (click)="drawer.close()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </h2>
+      <div class="reading-list-content">
+        <tmo-reading-list></tmo-reading-list>
+      </div>
+    </div>
+  </mat-drawer>
+</mat-drawer-container>

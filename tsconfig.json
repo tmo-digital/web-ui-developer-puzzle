@@ -1,0 +1,29 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@tmo/shared/styles": ["libs/shared/styles/src/index.ts"],
+      "@tmo/shared/models": ["libs/shared/models/src/index.ts"],
+      "@tmo/books/feature": ["libs/books/feature/src/index.ts"],
+      "@tmo/books/data-access": ["libs/books/data-access/src/index.ts"],
+      "@tmo/shared/storage": ["libs/shared/storage/src/index.ts"],
+      "@tmo/shared/testing": ["libs/shared/testing/src/index.ts"],
+      "@tmo/api/books": ["libs/api/books/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

@@ -1,0 +1,72 @@
+@import 'variables.scss';
+
+form {
+  margin-bottom: $spacing-xs;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto;
+}
+
+.book {
+  display: flex;
+  flex-direction: column;
+  margin: 2px;
+  padding: $spacing-xxs;
+  background-color: $gray10;
+}
+
+.book--title {
+  font-weight: 500;
+  color: $gray80;
+  margin-bottom: $spacing-xs;
+}
+
+.book--content {
+  display: flex;
+  flex: 1;
+}
+
+.book--content--cover {
+  margin-right: $spacing-xxs;
+}
+
+.book--content--info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+
+  > div {
+    margin-bottom: $spacing-xxs;
+  }
+
+  > div:last-child {
+    margin: 0;
+    flex: 1;
+    position: relative;
+    padding-bottom: $spacing-lg;
+
+    button {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+}
+
+.empty {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  font-size: 1.5rem;
+  color: $gray40;
+}

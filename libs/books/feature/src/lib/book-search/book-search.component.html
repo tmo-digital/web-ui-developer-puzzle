@@ -1,0 +1,56 @@
+<form [formGroup]="searchForm" (submit)="searchBooks()">
+  <mat-form-field floatLabel="never">
+    <input
+      autoFocus
+      matInput
+      type="search"
+      placeholder="Search for books to add to your reading list"
+      formControlName="term"
+    />
+    <button mat-icon-button matSuffix>
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+</form>
+
+<ng-container *ngIf="searchTerm; else empty">
+  <div class="book-grid">
+    <div class="book" data-testing="book-item" *ngFor="let b of books">
+      <div class="book--title">
+        {{ b.title }}
+      </div>
+      <div class="book--content">
+        <div class="book--content--cover">
+          <img src="{{ b.coverUrl }}" />
+        </div>
+        <div class="book--content--info">
+          <div><strong>Author:</strong> {{ b.authors.join(',') }}</div>
+          <div><strong>Publisher:</strong> {{ b.publisher }}</div>
+          <div>
+            <strong>Published:</strong> {{ formatDate(b.publishedDate) }}
+          </div>
+          <p [innerHTML]="b.description"></p>
+          <div>
+            <button
+              mat-flat-button
+              color="primary"
+              (click)="addBookToReadingList(b)"
+              [disabled]="b.isAdded"
+            >
+              Want to Read
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-template #empty>
+  <div class="empty">
+    <p>
+      Try searching for a topic, for example "<a (click)="searchExample()"
+        >JavaScript</a
+      >".
+    </p>
+  </div>
+</ng-template>

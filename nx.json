@@ -1,0 +1,58 @@
+{
+  "npmScope": "tmo",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "okreads": {
+      "tags": [],
+      "implicitDependencies": ["okreads-browser", "okreads-api"]
+    },
+    "okreads-browser": {
+      "tags": [],
+      "implicitDependencies": ["shared-styles"]
+    },
+    "okreads-api": {
+      "tags": []
+    },
+    "okreads-e2e": {
+      "tags": []
+    },
+    "shared-storage": {
+      "tags": []
+    },
+    "shared-styles": {
+      "tags": []
+    },
+    "shared-models": {
+      "tags": []
+    },
+    "books-feature": {
+      "tags": []
+    },
+    "books-data-access": {
+      "tags": []
+    },
+    "shared-testing": {
+      "tags": []
+    },
+    "api-books": {
+      "tags": []
+    }
+  }
+}
