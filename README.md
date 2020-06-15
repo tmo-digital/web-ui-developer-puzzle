@@ -70,8 +70,8 @@ There are five tasks in total. Each task has an estimated time for completion, s
 
 3. [Accessibility](https://webaim.org/intro/) is an important feature of all public facing websites.
 
-- In Google Chrome, run an automated scan with the Lighthouse extension. [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk), note these issues.
-- In Chrome again, manually check for accessibility issues. Identify at least 3 issue, not found in the automated scan.
+   - In Google Chrome, run an automated scan with the Lighthouse extension. [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk), note these issues.
+   - In Chrome again, manually check for accessibility issues. Identify at least 3 issue, not found in the automated scan.
 
 4. Fix _at least one_ of the issues noted in step 2 and _all_ the issues from step 3.
 5. Run lint, unit tests, and e2e tests. Fix anything that fails.
