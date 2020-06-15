@@ -64,12 +64,11 @@ There are five tasks in total. Each task has an estimated time for completion, s
    For example,
 
    - Are there any problems or code smells in the app? (Focus on code in the `libs/books` folder)
-   - Are there any web accessibility (a11y) issues in the app?
    - Are there other improvements you would make to the app? What are they and why?
 
    Write your review in bullet points. You should list at least three items.
 
-3. [Accessability](https://webaim.org/intro/) is an important feature of all public facing websites.
+3. [Accessibility](https://webaim.org/intro/) is an important feature of all public facing websites.
 
 - In Google Chrome, run an automated scan with the Lighthouse extension. [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk), note these issues.
 - In Chrome again, manually check for accessibility issues. Identify at least 3 issue, not found in the automated scan.
