@@ -62,13 +62,20 @@ There are five tasks in total. Each task has an estimated time for completion, s
 2. Create a file named `CODE_REVIEW.md` at the workspace root write a short code review based on the existing code.
 
    For example,
+
    - Are there any problems or code smells in the app? (Focus on code in the `libs/books` folder)
    - Are there any web accessibility (a11y) issues in the app?
    - Are there other improvements you would make to the app? What are they and why?
-   
-   Write your review in bullet points. You should list at least three items. 
-3. Fix _at least one_ of the issues noted in step 2.
-4. Run lint, unit tests, and e2e tests. Fix anything that fails.
+
+   Write your review in bullet points. You should list at least three items.
+
+3. [Accessability](https://webaim.org/intro/) is an important feature of all public facing websites.
+
+- In Google Chrome, run an automated scan with the Lighthouse extension. [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk), note these issues.
+- In Chrome again, manually check for accessibility issues. Identify at least 3 issue, not found in the automated scan.
+
+4. Fix _at least one_ of the issues noted in step 2 and _all_ the issues from step 3.
+5. Run lint, unit tests, and e2e tests. Fix anything that fails.
 
    ```
    npm run lint
@@ -78,7 +85,7 @@ There are five tasks in total. Each task has an estimated time for completion, s
 
    **Note:** For the e2e tests to work the app must be running (`npm start`).
 
-5. Commit your changes to the feature branch and open a pull-request with `master` as the target.
+6. Commit your changes to the feature branch and open a pull-request with `master` as the target.
 
 **Note:** You should now have two commits on `master`. For example, you should see something similar to the following in git.
 
@@ -139,12 +146,11 @@ aaaaaaa initial commit
 Ready to submit? Please review the checklist below.
 
 1. Have you opened four pull-requests for the tasks? Make sure they are opened with the correct target branch.
-    - Task 1: `chore/code-review -> master`
-    - Task 2: `feat/instant-search -> chore/code-review`
-    - Task 3: `feat/undo-actions -> chore/code-review`
-    - Task 4: `feat/mark-as-read -> chore/code-review`
-3. Are all your features working as per requirements?
-4. Are lint, test, e2e passing?
- 
-Once you are done, send the link to your repo to your T-Mobile manager for evaluation.
+   - Task 1: `chore/code-review -> master`
+   - Task 2: `feat/instant-search -> chore/code-review`
+   - Task 3: `feat/undo-actions -> chore/code-review`
+   - Task 4: `feat/mark-as-read -> chore/code-review`
+2. Are all your features working as per requirements?
+3. Are lint, test, e2e passing?
 
+Once you are done, send the link to your repo to your T-Mobile manager for evaluation.
