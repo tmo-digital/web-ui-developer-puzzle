@@ -118,16 +118,14 @@
               "apps/okreads/browser/tsconfig.app.json",
               "apps/okreads/browser/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/okreads/browser/**"]
+            "exclude": ["**/node_modules/**", "!apps/okreads/browser/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/okreads/browser/jest.config.js",
-            "tsConfig": "apps/okreads/browser/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/okreads/browser/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       }
@@ -174,14 +172,13 @@
               "apps/okreads/api/tsconfig.app.json",
               "apps/okreads/api/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/okreads/api/**"]
+            "exclude": ["**/node_modules/**", "!apps/okreads/api/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/okreads/api/jest.config.js",
-            "tsConfig": "apps/okreads/api/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
@@ -209,7 +206,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": ["libs/shared/models/tsconfig.lib.json"],
-            "exclude": ["**/node_modules/**", "!libs/shared/models/**"]
+            "exclude": ["**/node_modules/**", "!libs/shared/models/**/*"]
           }
         }
       },
@@ -232,16 +229,14 @@
               "libs/books/feature/tsconfig.lib.json",
               "libs/books/feature/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/books/feature/**"]
+            "exclude": ["**/node_modules/**", "!libs/books/feature/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/books/feature/jest.config.js",
-            "tsConfig": "libs/books/feature/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/books/feature/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -264,16 +259,14 @@
               "libs/books/data-access/tsconfig.lib.json",
               "libs/books/data-access/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/books/data-access/**"]
+            "exclude": ["**/node_modules/**", "!libs/books/data-access/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/books/data-access/jest.config.js",
-            "tsConfig": "libs/books/data-access/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/books/data-access/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -298,7 +291,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": ["apps/okreads-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/okreads-e2e/**"]
+            "exclude": ["**/node_modules/**", "!apps/okreads-e2e/**/*"]
           }
         }
       }
@@ -316,7 +309,7 @@
               "libs/shared/storage/tsconfig.lib.json",
               "libs/shared/storage/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/storage/**"]
+            "exclude": ["**/node_modules/**", "!libs/shared/storage/**/*"]
           }
         }
       }
@@ -331,7 +324,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": ["libs/shared/testing/tsconfig.lib.json"],
-            "exclude": ["**/node_modules/**", "!libs/shared/testing/**"]
+            "exclude": ["**/node_modules/**", "!libs/shared/testing/**/*"]
           }
         }
       },
@@ -347,7 +340,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": ["libs/api/books/tsconfig.lib.json"],
-            "exclude": ["**/node_modules/**", "!libs/api/books/**"]
+            "exclude": ["**/node_modules/**", "!libs/api/books/**/*"]
           }
         }
       }
