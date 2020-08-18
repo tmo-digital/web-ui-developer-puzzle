@@ -28,11 +28,6 @@ exports.config = {
   allScriptsTimeout: 90000,
   connectionRetryTimeout: 90000,
   connectionRetryCount: 3,
-  framework: 'mocha',
-  mochaOpts: {
-    reporter: 'spec',
-    timeout: 30000
-  },
   onPrepare() {
     // Slow down the tests so reviewers can keep up.
     const origFn = protractor.browser.driver.controlFlow().execute;

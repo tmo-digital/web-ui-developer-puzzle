@@ -1,4 +1,3 @@
-import { expect } from 'chai';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedTestingModule } from '@tmo/shared/testing';
@@ -23,6 +22,6 @@ describe('ProductsListComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).to.exist;
+    expect(component).toBeDefined();
   });
 });

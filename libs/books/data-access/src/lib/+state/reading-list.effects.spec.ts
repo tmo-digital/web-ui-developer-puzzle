@@ -1,14 +1,12 @@
 import { TestBed } from '@angular/core/testing';
-import { expect } from 'chai';
 import { ReplaySubject } from 'rxjs';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { provideMockStore } from '@ngrx/store/testing';
-import { DataPersistence, NxModule } from '@nrwl/angular';
-import { SharedTestingModule } from '@tmo/shared/testing';
+import { HttpTestingController } from '@angular/common/http/testing';
 
+import { SharedTestingModule } from '@tmo/shared/testing';
 import { ReadingListEffects } from './reading-list.effects';
 import * as ReadingListActions from './reading-list.actions';
-import { HttpTestingController } from '@angular/common/http/testing';
 
 describe('ToReadEffects', () => {
   let actions: ReplaySubject<any>;
@@ -17,10 +15,9 @@ describe('ToReadEffects', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NxModule.forRoot(), SharedTestingModule],
+      imports: [SharedTestingModule],
       providers: [
         ReadingListEffects,
-        DataPersistence,
         provideMockActions(() => actions),
         provideMockStore()
       ]
@@ -33,10 +30,10 @@ describe('ToReadEffects', () => {
   describe('loadReadingList$', () => {
     it('should work', done => {
       actions = new ReplaySubject();
-      actions.next(ReadingListActions.loadReadingList());
+      actions.next(ReadingListActions.init());
 
       effects.loadReadingList$.subscribe(action => {
-        expect(action).to.eql(
+        expect(action).toEqual(
           ReadingListActions.loadReadingListSuccess({ list: [] })
         );
         done();

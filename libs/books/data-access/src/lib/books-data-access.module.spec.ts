@@ -1,4 +1,3 @@
-import { expect } from 'chai';
 import { async, TestBed } from '@angular/core/testing';
 import { BooksDataAccessModule } from './books-data-access.module';
 
@@ -10,6 +9,6 @@ describe('ShopDataAccessModule', () => {
   }));
 
   it('should create', () => {
-    expect(BooksDataAccessModule).to.exist;
+    expect(BooksDataAccessModule).toBeDefined();
   });
 });

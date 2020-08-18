@@ -1,8 +1,6 @@
 import { TestBed } from '@angular/core/testing';
-import { expect } from 'chai';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { provideMockStore } from '@ngrx/store/testing';
-import { DataPersistence, NxModule } from '@nrwl/angular';
 import { ReplaySubject } from 'rxjs';
 import { createBook, SharedTestingModule } from '@tmo/shared/testing';
 
@@ -17,10 +15,9 @@ describe('BooksEffects', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NxModule.forRoot(), SharedTestingModule],
+      imports: [SharedTestingModule],
       providers: [
         BooksEffects,
-        DataPersistence,
         provideMockActions(() => actions),
         provideMockStore()
       ]
@@ -36,7 +33,7 @@ describe('BooksEffects', () => {
       actions.next(BooksActions.searchBooks({ term: '' }));
 
       effects.searchBooks$.subscribe(action => {
-        expect(action).to.eql(
+        expect(action).toEqual(
           BooksActions.searchBooksSuccess({ books: [createBook('A')] })
         );
         done();

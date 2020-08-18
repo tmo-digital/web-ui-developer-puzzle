@@ -1,5 +1,4 @@
 import { $, $$, browser, ExpectedConditions } from 'protractor';
-import { expect } from 'chai';
 
 describe('When: Use the search feature', () => {
   it('Then: I should be able to search books by title', async () => {
@@ -14,7 +13,7 @@ describe('When: Use the search feature', () => {
     await form.submit();
 
     const items = await $$('[data-testing="book-item"]');
-    expect(items.length).to.be.greaterThan(1, 'At least one book');
+    expect(items.length).toBeGreaterThan(1);
   });
 
   xit('Then: I should see search results as I am typing', async () => {

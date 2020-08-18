@@ -1,4 +1,3 @@
-import { expect } from 'chai';
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppController } from './app.controller';
 
@@ -15,7 +14,7 @@ describe('AppController', () => {
   describe('getData', () => {
     it('should return root resource', () => {
       const appController = app.get<AppController>(AppController);
-      expect(appController.getRoot()).to.eq('It Worked!');
+      expect(appController.getRoot()).toEqual('It Worked!');
     });
   });
 });

@@ -2,17 +2,17 @@ import { createAction, props } from '@ngrx/store';
 import { Book } from '@tmo/shared/models';
 
 export const searchBooks = createAction(
-  '[Books Search Bar] Search Books',
+  '[Books Search Bar] Search',
   props<{ term: string }>()
 );
 
 export const searchBooksSuccess = createAction(
-  '[Book Search Bar] Search Books Success',
+  '[Book Search API] Search success',
   props<{ books: Book[] }>()
 );
 
 export const searchBooksFailure = createAction(
-  '[Book Search Bar] Search Books Failure',
+  '[Book Search API] Search failure',
   props<{ error: any }>()
 );
 
