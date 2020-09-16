@@ -12,16 +12,14 @@ export class ReadingListEffects implements OnInitEffects {
     this.actions$.pipe(
       ofType(ReadingListActions.init),
       exhaustMap(() =>
-        this.http
-          .get<ReadingListItem[]>('/api/reading-list')
-          .pipe(
-            map(data =>
-              ReadingListActions.loadReadingListSuccess({ list: data })
-            )
+        this.http.get<ReadingListItem[]>('/api/reading-list').pipe(
+          map((data) =>
+            ReadingListActions.loadReadingListSuccess({ list: data })
+          ),
+          catchError((error) =>
+            of(ReadingListActions.loadReadingListError({ error }))
           )
-      ),
-      catchError(error =>
-        of(ReadingListActions.loadReadingListError({ error }))
+        )
       )
     )
   );
