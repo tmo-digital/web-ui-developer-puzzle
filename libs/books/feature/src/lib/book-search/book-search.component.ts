@@ -5,21 +5,22 @@ import {
   clearSearch,
   getAllBooks,
   ReadingListBook,
-  searchBooks
+  searchBooks,
 } from '@tmo/books/data-access';
-import { FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { Book } from '@tmo/shared/models';
+import { debounceTime, switchMap, distinctUntilChanged } from 'rxjs/operators';
+import { of, Observable } from 'rxjs';
 
 @Component({
   selector: 'tmo-book-search',
   templateUrl: './book-search.component.html',
-  styleUrls: ['./book-search.component.scss']
+  styleUrls: ['./book-search.component.scss'],
 })
 export class BookSearchComponent implements OnInit {
   books: ReadingListBook[];
-
   searchForm = this.fb.group({
-    term: ''
+    term: '',
   });
 
   constructor(
@@ -32,9 +33,30 @@ export class BookSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.select(getAllBooks).subscribe(books => {
+    this.store.select(getAllBooks).subscribe((books) => {
       this.books = books;
     });
+    // this.searchForm
+    //   .get('term')
+    //   .valueChanges.subscribe((x) => console.log('dsd', x));
+
+    this.searchForm
+      .get('term')
+      .valueChanges.pipe(debounceTime(500), distinctUntilChanged())
+      .subscribe((changes) => {
+        this.searchBooks();
+        console.log('dsd changes', changes);
+      });
+
+    // this.searchForm.get('term').valueChanges.pipe(
+    //   debounceTime(500),
+    //   distinctUntilChanged(),
+    //   switchMap(() => {
+    //     console.log('value called hereee', this.searchForm);
+    //     this.searchBooks();
+    //     return of([]);
+    //   })
+    // );
   }
 
   formatDate(date: void | string) {
@@ -58,5 +80,6 @@ export class BookSearchComponent implements OnInit {
     } else {
       this.store.dispatch(clearSearch());
     }
+    return true;
   }
 }

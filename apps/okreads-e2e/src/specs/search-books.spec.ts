@@ -21,7 +21,6 @@ describe('When: Use the search feature', () => {
     await browser.wait(
       ExpectedConditions.textToBePresentInElement($('tmo-root'), 'okreads')
     );
-
     // TODO: Implement this test!
   });
 });
