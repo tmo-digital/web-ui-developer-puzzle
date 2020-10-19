@@ -5,7 +5,7 @@ import { getReadingList, removeFromReadingList } from '@tmo/books/data-access';
 @Component({
   selector: 'tmo-reading-list',
   templateUrl: './reading-list.component.html',
-  styleUrls: ['./reading-list.component.scss'],
+  styleUrls: ['./reading-list.component.scss']
 })
 export class ReadingListComponent {
   readingList$ = this.store.select(getReadingList);

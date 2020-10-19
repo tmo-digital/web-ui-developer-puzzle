@@ -67,6 +67,5 @@ export class BookSearchComponent implements OnInit {
     } else {
       this.store.dispatch(clearSearch());
     }
-    return true;
   }
 }
