@@ -21,6 +21,14 @@ describe('When: Use the search feature', () => {
     await browser.wait(
       ExpectedConditions.textToBePresentInElement($('tmo-root'), 'okreads')
     );
+    const form = await $('form');
+    const input = await $('input[type="search"]');
+    await input.sendKeys('java');
+    await form.submit();
+
+    const items = await $$('[data-testing="book-item"]');
+    expect(items.length).toBeGreaterThan(1);
+
     // TODO: Implement this test!
   });
 });
