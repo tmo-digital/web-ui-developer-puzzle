@@ -20,6 +20,16 @@
       </button>
     </div>
   </div>
+  <div *ngIf="undoLastItem">
+    <button
+      mat-icon-button
+      color="warn"
+      (click)="undoLastOperation(undoLastItem)"
+    >
+      <mat-icon>restore</mat-icon>
+      Undo
+    </button>
+  </div>
 </ng-container>
 <ng-template #empty>
   <p class="empty">You haven't added any books to your reading list yet.</p>

@@ -10,7 +10,7 @@ describe('ReadingListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [BooksFeatureModule, SharedTestingModule]
+      imports: [BooksFeatureModule, SharedTestingModule],
     }).compileComponents();
   }));
 
