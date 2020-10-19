@@ -34,7 +34,6 @@ export class BookSearchComponent implements OnInit {
   ngOnInit(): void {
     this.store.select(getAllBooks).subscribe((books) => {
       this.books = books;
-      // console.log('current books', this.books);
     });
   }
 
