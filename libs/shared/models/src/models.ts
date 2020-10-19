@@ -8,7 +8,7 @@ export interface Book {
   coverUrl?: string;
 }
 
-export interface ReadingListItem extends Omit<Book, 'id'> {
+export interface ReadingListItem {
   bookId: string;
   finished?: boolean;
   finishedDate?: string;
