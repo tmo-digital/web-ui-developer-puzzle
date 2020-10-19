@@ -15,16 +15,10 @@ import { Book, ReadingListItem } from '@tmo/shared/models';
   styleUrls: ['./reading-list.component.scss'],
 })
 export class ReadingListComponent {
+  readingList$ = this.store.select(getReadingList);
   undoLastItem: Book;
-  readingList$ = this.store.select(getReadingList)
-    ? this.store.select(getReadingList)
-    : [];
 
-  constructor(private readonly store: Store, private _snackBar: MatSnackBar) {
-    this.readingList$.forEach((res) => {
-      console.log('res', res);
-    });
-  }
+  constructor(private readonly store: Store, private _snackBar: MatSnackBar) {}
 
   removeFromReadingList(item) {
     this.undoLastItem = { ...item };
