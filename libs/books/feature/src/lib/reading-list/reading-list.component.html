@@ -19,6 +19,17 @@
         <mat-icon>remove_circle</mat-icon>
       </button>
     </div>
+    <div>
+      <button
+        mat-icon-button
+        color="primary"
+        data-testing="toggle-undo-list"
+        [attr.aria-label]="'Finished ' + b.title + ' from reading list'"
+        (click)="doneFromReadingList(b)"
+      >
+        <mat-icon>done</mat-icon>
+      </button>
+    </div>
   </div>
 </ng-container>
 <ng-template #empty>
