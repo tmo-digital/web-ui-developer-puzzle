@@ -19,7 +19,7 @@ import { of, Observable } from 'rxjs';
 })
 export class BookSearchComponent implements OnInit {
   books: ReadingListBook[];
-  searchForm = this.fb.group({
+  searchForm: FormGroup = this.fb.group({
     term: '',
   });
 
@@ -33,16 +33,15 @@ export class BookSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.select(getAllBooks).subscribe((books) => {
+    this.store.select(getAllBooks).subscribe((books: ReadingListBook[]) => {
       this.books = books;
     });
 
     this.searchForm
       .get('term')
       .valueChanges.pipe(debounceTime(500), distinctUntilChanged())
-      .subscribe((changes) => {
+      .subscribe(() => {
         this.searchBooks();
-        console.log('dsd changes', changes);
       });
 
   }
