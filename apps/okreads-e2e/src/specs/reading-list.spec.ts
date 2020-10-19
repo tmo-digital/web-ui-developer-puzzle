@@ -17,4 +17,24 @@ describe('When: I use the reading list feature', () => {
       )
     );
   });
+
+  it('Then:Undo my list', async () => {
+    await browser.get('/');
+    await browser.wait(
+      ExpectedConditions.textToBePresentInElement(
+        $('tmo-reading-list'),
+        'toggle-undo-list'
+      )
+    );
+
+    const undoToggle = await $('[data-testing="toggle-undo-list"]');
+    await undoToggle.click();
+
+    await browser.wait(
+      ExpectedConditions.textToBePresentInElement(
+        $('[data-testing="reading-list-container"]'),
+        'My Reading List'
+      )
+    );
+  });
 });
