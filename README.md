@@ -52,7 +52,7 @@ Then add them to their reading list.
 
 ## Tasks
 
-There are five tasks in total. Each task has an estimated time for completion, so use this as a rough guide.
+There are four tasks in total. Each task has an estimated time for completion, so use this as a rough guide.
 
 ### Task 1: Code fixes and review
 
