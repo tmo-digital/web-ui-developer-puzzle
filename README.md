@@ -82,7 +82,8 @@ There are four tasks in total. Each task has an estimated time for completion, s
    npm run e2e
    ```
 
-   **Note:** For the e2e tests to work the app must be running (`npm start`).
+   > **Note:** For the e2e tests to work the app must be running (`npm start`).
+   > If you want to keep the test runner open, use `npm run e2e:watch`
 
 6. Commit your changes to the feature branch and open a pull-request with `master` as the target.
 
