@@ -10,6 +10,7 @@
     "test": "nx test",
     "lint": "nx workspace-lint && nx lint",
     "e2e": "nx e2e okreads-e2e",
+    "e2e:watch": "nx e2e okreads-e2e --watch",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",
     "affected:build": "nx affected:build",
@@ -63,6 +64,7 @@
     "@nestjs/testing": "^7.0.0",
     "@ngrx/schematics": "9.1.0",
     "@ngrx/store-devtools": "9.1.0",
+    "@nrwl/cypress": "10.0.12",
     "@nrwl/jest": "10.0.12",
     "@nrwl/nest": "10.0.12",
     "@nrwl/node": "10.0.12",
@@ -76,6 +78,7 @@
     "@types/sinon-test": "^2.4.1",
     "chai": "^4.2.0",
     "codelyzer": "^6.0.0",
+    "cypress": "^6.0.1",
     "dotenv": "6.2.0",
     "eslint": "6.8.0",
     "jest": "25.2.3",
@@ -89,6 +92,11 @@
     "ts-jest": "25.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~6.1.0",
-    "typescript": "~3.9.7"
+    "typescript": "~3.9.7",
+    "eslint-plugin-cypress": "^2.10.3",
+    "@nrwl/eslint-plugin-nx": "10.0.12",
+    "@typescript-eslint/parser": "2.19.2",
+    "@typescript-eslint/eslint-plugin": "2.19.2",
+    "eslint-config-prettier": "6.0.0"
   }
 }
