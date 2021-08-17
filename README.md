@@ -85,6 +85,8 @@ There are four tasks in total. Each task has an estimated time for completion, s
    > **Note:** For the e2e tests to work the app must be running (`npm start`).
    > If you want to keep the test runner open, use `npm run e2e:watch`
 
+   > **Also note:** when adjusting broken test cases, think about whether the actual test is broken or the actual implementation the test case is supposed to cover.
+
 6. Commit your changes to the feature branch and open a pull-request with `master` as the target.
 
 **Note:** You should now have two commits on `master`. For example, you should see something similar to the following in git.
