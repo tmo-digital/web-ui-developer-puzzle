@@ -8,6 +8,8 @@
             data-testing="toggle-reading-list"
             mat-button
             (click)="drawer.toggle()"
+            class="reading-list-button"
+            aria-label="Open Reading List"
           >
             Reading List
             <tmo-total-count></tmo-total-count>
@@ -23,7 +25,7 @@
     <div class="reading-list-container" data-testing="reading-list-container">
       <h2>
         My Reading List
-        <button mat-icon-button (click)="drawer.close()">
+        <button mat-icon-button (click)="drawer.close()" aria-label="Close Reading List">
           <mat-icon>close</mat-icon>
         </button>
       </h2>

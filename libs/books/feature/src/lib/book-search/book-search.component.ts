@@ -33,7 +33,7 @@ export class BookSearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.select(getAllBooks).subscribe(books => {
-      this.books = books;
+      this.books = books.sort((a, b) => (a.title < b.title ? -1 : 1));;
     });
   }
 
