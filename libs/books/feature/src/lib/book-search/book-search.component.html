@@ -6,8 +6,9 @@
       type="search"
       placeholder="Search for books to add to your reading list"
       formControlName="term"
+      (keypress)="searchBooks()"
     />
-    <button mat-icon-button matSuffix>
+    <button aria-label="Click here to start search" mat-icon-button matSuffix>
       <mat-icon>search</mat-icon>
     </button>
   </mat-form-field>
@@ -15,29 +16,42 @@
 
 <ng-container *ngIf="searchTerm; else empty">
   <div class="book-grid">
-    <div class="book" data-testing="book-item" *ngFor="let b of books">
+    <div class="book" role="button" data-testing="book-item" *ngFor="let book of books" [attr.aria-label]="book.title">
       <div class="book--title">
-        {{ b.title }}
+        {{ book.title }}
       </div>
       <div class="book--content">
         <div class="book--content--cover">
-          <img src="{{ b.coverUrl }}" />
+          <img src="{{ book.coverUrl }}" />
         </div>
         <div class="book--content--info">
-          <div><strong>Author:</strong> {{ b.authors.join(',') }}</div>
-          <div><strong>Publisher:</strong> {{ b.publisher }}</div>
+          <div><strong>Author:</strong> {{ book.authors.join(',') }}</div>
+          <div><strong>Publisher:</strong> {{ book.publisher }} </div>
           <div>
-            <strong>Published:</strong> {{ formatDate(b.publishedDate) }}
+            <strong>Published:</strong> {{ formatDate(book.publishedDate) }}
           </div>
-          <p [innerHTML]="b.description"></p>
-          <div>
+          <p [innerHTML]="book.description"></p>
+          <div *ngIf="finishedBooks.indexOf(book.id)==-1">
             <button
+              
               mat-flat-button
+              data-testing="read-button"
               color="primary"
-              (click)="addBookToReadingList(b)"
-              [disabled]="b.isAdded"
+              (click)="addBookToReadingList(book)"
+              [disabled]="book.isAdded"
+              aria-label="Want to Read"
             >
               Want to Read
+            </button>
+          </div>
+          <div  *ngIf="finishedBooks.indexOf(book.id)!=-1">
+            <button
+           
+              mat-flat-button
+              color="primary"
+              aria-label="Finished"
+            >
+            Finished  
             </button>
           </div>
         </div>

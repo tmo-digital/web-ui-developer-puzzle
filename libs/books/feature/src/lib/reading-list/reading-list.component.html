@@ -1,22 +1,38 @@
 <ng-container *ngIf="(readingList$ | async).length > 0; else empty">
-  <div class="reading-list-item" *ngFor="let b of readingList$ | async">
+  <div class="reading-list-item" *ngFor="let book of readingList$ | async">
     <div>
-      <img class="reading-list-item--cover" [src]="b.coverUrl" />
+      <img class="reading-list-item--cover" [src]="book.coverUrl" />
     </div>
     <div class="reading-list-item--details">
-      <strong class="reading-list-item--details--title">{{ b.title }}</strong>
+      <strong class="reading-list-item--details--title">{{ book.title }}</strong>
       <div class="reading-list-item--details--author">
-        {{ b.authors.join(',') }}
+        {{ book.authors.join(',') }}
+      </div>
+      <div class="reading-list-item--details--author" *ngIf="book.finished" data-testing="finish-book-text">
+        Finished on {{book.finishedDate | date:'medium'}}
       </div>
     </div>
     <div>
       <button
+        data-testing="remove-book-button"
         mat-icon-button
         color="warn"
-        [attr.aria-label]="'Remove ' + b.title + ' from reading list'"
-        (click)="removeFromReadingList(b)"
+        [attr.aria-label]="'Remove ' + book.title + ' from reading list'"
+        (click)="removeFromReadingList(book)"
       >
         <mat-icon>remove_circle</mat-icon>
+      </button>
+    </div>
+    <div *ngIf="!book.finished">
+      <button
+        data-testing="finish-book-button"
+        mat-icon-button
+        matTooltip="Mark book as finished"
+        style="color: green;"
+        [attr.aria-label]="'Remove ' + book.title + ' from reading list'"
+        (click)="markBookAsFinished(book)"
+      >
+        <mat-icon>check_circle_outline</mat-icon>
       </button>
     </div>
   </div>

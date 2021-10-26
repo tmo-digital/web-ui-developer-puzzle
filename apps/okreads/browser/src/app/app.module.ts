@@ -11,7 +11,7 @@ import { BooksFeatureModule } from '@tmo/books/feature';
 import { MatButtonModule } from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -19,6 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
     BrowserModule,
     HttpClientModule,
     MatBadgeModule,
+    MatTooltipModule,
     MatButtonModule,
     MatIconModule,
     MatSidenavModule,

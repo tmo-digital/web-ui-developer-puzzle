@@ -12,11 +12,11 @@ export class BooksController {
   constructor(private readonly books: BooksService) {}
 
   @Get('/books/search')
-  async searchBooks(@Query('q') term) {
+  async searchBooks(@Query('q') term: string) {
     try {
-      return await this.books.search(term);
+     return await this.books.search(term);
     } catch (e) {
-      throw new HttpException(e.message, HttpStatus.UNPROCESSABLE_ENTITY);
+     throw new HttpException(e.message, HttpStatus.UNPROCESSABLE_ENTITY);
     }
   }
 }
