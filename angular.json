@@ -56,9 +56,13 @@
               "apps/okreads/browser/src/favicon.ico",
               "apps/okreads/browser/src/assets"
             ],
-            "styles": ["apps/okreads/browser/src/styles.scss"],
+            "styles": [
+              "apps/okreads/browser/src/styles.scss"
+            ],
             "stylePreprocessorOptions": {
-              "includePaths": ["libs/shared/styles/src/lib"]
+              "includePaths": [
+                "libs/shared/styles/src/lib"
+              ]
             },
             "scripts": []
           },
@@ -118,7 +122,10 @@
               "apps/okreads/browser/tsconfig.app.json",
               "apps/okreads/browser/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/okreads/browser/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/okreads/browser/**/*"
+            ]
           }
         },
         "test": {
@@ -143,7 +150,9 @@
             "outputPath": "dist/apps/okreads/api",
             "main": "apps/okreads/api/src/main.ts",
             "tsConfig": "apps/okreads/api/tsconfig.app.json",
-            "assets": ["apps/okreads/api/src/assets"]
+            "assets": [
+              "apps/okreads/api/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -172,7 +181,10 @@
               "apps/okreads/api/tsconfig.app.json",
               "apps/okreads/api/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/okreads/api/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/okreads/api/**/*"
+            ]
           }
         },
         "test": {
@@ -205,8 +217,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["libs/shared/models/tsconfig.lib.json"],
-            "exclude": ["**/node_modules/**", "!libs/shared/models/**/*"]
+            "tsConfig": [
+              "libs/shared/models/tsconfig.lib.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/models/**/*"
+            ]
           }
         }
       },
@@ -229,7 +246,10 @@
               "libs/books/feature/tsconfig.lib.json",
               "libs/books/feature/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/books/feature/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/books/feature/**/*"
+            ]
           }
         },
         "test": {
@@ -259,7 +279,10 @@
               "libs/books/data-access/tsconfig.lib.json",
               "libs/books/data-access/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/books/data-access/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/books/data-access/**/*"
+            ]
           }
         },
         "test": {
@@ -293,8 +316,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/okreads-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/okreads-e2e/**/*"]
+            "tsConfig": [
+              "apps/okreads-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/okreads-e2e/**/*"
+            ]
           }
         }
       }
@@ -312,7 +340,10 @@
               "libs/shared/storage/tsconfig.lib.json",
               "libs/shared/storage/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/storage/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/storage/**/*"
+            ]
           }
         }
       }
@@ -326,8 +357,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["libs/shared/testing/tsconfig.lib.json"],
-            "exclude": ["**/node_modules/**", "!libs/shared/testing/**/*"]
+            "tsConfig": [
+              "libs/shared/testing/tsconfig.lib.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/testing/**/*"
+            ]
           }
         }
       },
@@ -342,15 +378,21 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["libs/api/books/tsconfig.lib.json"],
-            "exclude": ["**/node_modules/**", "!libs/api/books/**/*"]
+            "tsConfig": [
+              "libs/api/books/tsconfig.lib.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/api/books/**/*"
+            ]
           }
         }
       }
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/angular"
+    "defaultCollection": "@nrwl/angular",
+    "analytics": false
   },
   "schematics": {
     "@nrwl/angular:application": {
