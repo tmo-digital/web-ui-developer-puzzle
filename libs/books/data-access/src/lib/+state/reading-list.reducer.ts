@@ -9,7 +9,6 @@ export const READING_LIST_FEATURE_KEY = 'readingList';
 export interface State extends EntityState<ReadingListItem> {
   loaded: boolean;
   error: null | string;
-  stateHistory: State[];
 }
 
 export interface ReadingListPartialState {
@@ -24,8 +23,7 @@ export const readingListAdapter: EntityAdapter<ReadingListItem> = createEntityAd
 
 export const initialState: State = readingListAdapter.getInitialState({
   loaded: false,
-  error: null,
-  stateHistory: [],
+  error: null
 });
 
 const readingListReducer = createReducer(
@@ -49,31 +47,18 @@ const readingListReducer = createReducer(
       error: action.error
     };
   }),
-  // on(ReadingListActions.addToReadingList, (state, action) =>
-  //   readingListAdapter.addOne({ bookId: action.book.id, ...action.book }, {...state,
-  //     stateHistory: [...state.stateHistory, { ...state }] } )
-  // ),
-  // on(ReadingListActions.removeFromReadingList, (state, action) =>
-  //   readingListAdapter.removeOne(action.item.bookId,  {...state,
-  //     stateHistory: [...state.stateHistory, { ...state }]})
-  // )
-  on(ReadingListActions.addToReadingList, (state, action) => {
-    const newState = readingListAdapter.addOne({ bookId: action.book.id, ...action.book }, state);
-    return { ...newState, stateHistory: [...state.stateHistory, { ...state }] };
-  }),
-  on(ReadingListActions.removeFromReadingList, (state, action) => {
-    const newState = readingListAdapter.removeOne(action.item.bookId, state);
-    return { ...newState, stateHistory: [...state.stateHistory, { ...state }] };
-  }),
-  on(ReadingListActions.undoAction, (state) => {
-    if (state.stateHistory.length > 0) {
-      const previousState = state.stateHistory[state.stateHistory.length - 1];
-      const updatedHistory = state.stateHistory.slice(0, -1); // Remove the last state from history
-      return { ...previousState, stateHistory: updatedHistory };
-    }
-    return state;
-  }),
-);
+  on(ReadingListActions.addToReadingList, (state, action) =>
+    readingListAdapter.addOne({ bookId: action.book.id, ...action.book }, state)
+  ),
+  on(ReadingListActions.removeFromReadingList, (state, action) =>
+    readingListAdapter.removeOne(action.item.bookId, state)
+  ),
+  on(ReadingListActions.markBookAsFinished, (state, action) => {
+    const updatedItem = action.item.bookId;
+    return readingListAdapter.addOne({ ...action.item }, state);
+  })
+)
+
 
 export function reducer(state: State | undefined, action: Action) {
   return readingListReducer(state, action);

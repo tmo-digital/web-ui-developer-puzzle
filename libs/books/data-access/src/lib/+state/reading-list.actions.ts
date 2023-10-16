@@ -42,4 +42,17 @@ export const confirmedRemoveFromReadingList = createAction(
   props<{ item: ReadingListItem }>()
 );
 
-export const undoAction = createAction('[History] Undo Last Change');
+export const markBookAsFinished = createAction(
+  '[Reading List API] Search Results] mark as read',
+  props<{  item: ReadingListItem }>()
+);
+
+export const confirmedMarkBookAsFinished = createAction(
+  '[Reading List API] Confirmed mark as read',
+  props<{ book: ReadingListItem }>()
+);
+
+export const failedMarkBookAsFinished = createAction(
+  '[Reading List API] Failed mark as read',
+  props<{ error: string }>()
+);

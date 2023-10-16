@@ -30,13 +30,12 @@
             <strong>Published:</strong> {{ formatDate(b.publishedDate) }}
           </div>
           <p [innerHTML]="b.description"></p>
-          <div> 
+          <div>
             <button
               mat-flat-button
               color="primary"
               (click)="addBookToReadingList(b)"
               [disabled]="b.isAdded"
-              style="margin-left: 10px;" 
             >
               Want to Read
             </button>
