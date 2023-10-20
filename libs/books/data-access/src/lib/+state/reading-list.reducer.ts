@@ -52,8 +52,13 @@ const readingListReducer = createReducer(
   ),
   on(ReadingListActions.removeFromReadingList, (state, action) =>
     readingListAdapter.removeOne(action.item.bookId, state)
-  )
-);
+  ),
+  on(ReadingListActions.markBookAsFinished, (state, action) => {
+    const updatedItem = action.item.bookId;
+    return readingListAdapter.addOne({ ...action.item }, state);
+  })
+)
+
 
 export function reducer(state: State | undefined, action: Action) {
   return readingListReducer(state, action);
